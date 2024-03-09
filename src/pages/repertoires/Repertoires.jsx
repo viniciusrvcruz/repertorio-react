@@ -7,6 +7,7 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { collection, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { ErrorMessage } from '../../components/alerts/ErrorMessage';
+import { Loading } from '../../components/loading/Loading';
 
 export const Repertoires = () => {
   const { user } = useContext(AuthContext)

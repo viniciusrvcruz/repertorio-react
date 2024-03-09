@@ -55,7 +55,7 @@ export const RepertoireMusics = () => {
 
     return (
         <>
-            {(repertoire) && <div className={styles.repertoireMusics} onClick={() => { if(showOption) setShowOption(false)}}>
+            {repertoire && <div className={styles.repertoireMusics} onClick={() => { if(showOption) setShowOption(false)}}>
                 <Header>
                     <i className="fa-solid fa-arrow-left" onClick={() => navigate('/')}></i>
                     <h3>Repertório</h3>

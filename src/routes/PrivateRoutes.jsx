@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom"
 import { AuthContext } from "../contexts/AuthContext"
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../services/firebaseConfig";
+import { Loading } from "../components/loading/Loading";
 
 
 export const PrivateRoutes = ({ children }) => {
@@ -13,6 +14,6 @@ export const PrivateRoutes = ({ children }) => {
     } else if (user === false) {
         return <Navigate to='/login' replace />
     } else {
-        return <div>loading...</div>
+        return <Loading />
     }
 }

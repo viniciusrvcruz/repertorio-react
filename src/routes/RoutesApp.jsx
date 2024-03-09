@@ -16,7 +16,7 @@ export const RoutesApp = () => {
             <Route path="/" element={<PrivateRoutes><Repertoires /></PrivateRoutes>} />
             <Route path="/repertoire/:repertoireId" element={<PrivateRoutes><RepertoireMusics /></PrivateRoutes>} />
             <Route path="/repertoire/:repertoireId/:musicId" element={<PrivateRoutes><Music /></PrivateRoutes>} />
-            <Route path="/login" element={!user ? <Login /> : <Navigate to='/' />} />
+            <Route path="/login" element={!user ? <Login /> : <Navigate to='/' replace />} />
         </Routes>
     </BrowserRouter>
   )
