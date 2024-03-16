@@ -5,7 +5,7 @@ import { Header } from '../../components/header/Header'
 import { deleteDoc, doc, onSnapshot, updateDoc } from 'firebase/firestore'
 import { AuthContext } from '../../contexts/AuthContext'
 import { db } from '../../services/firebaseConfig'
-import { VideoId } from '../../utils/Utils'
+import { GetDigitalPlatform, VideoId } from '../../utils/Utils'
 import { ModalSaveMusic } from '../../components/modal/ModalSaveMusic/ModalSaveMusic'
 import { ErrorMessage } from '../../components/alerts/ErrorMessage'
 
@@ -81,10 +81,15 @@ export const Music = () => {
                 </div>
             }
             <section>
-                <div>
-                    <h2>{music.name}</h2>
-                    <h4>{music.artist}</h4>
-                    <h4>Tom: {music.tone}</h4>
+                <div className={styles.musicInfoAudio}>
+                    <div className={styles.musicInfo}>
+                        <h2>{music.name}</h2>
+                        <h4>{music.artist}</h4>
+                        <h4>Tom: {music.tone}</h4>
+                    </div>
+                    {music.audioUrl && <a className={styles.musicAudio} href={music.audioUrl} target='_blanck'>
+                        <img src={GetDigitalPlatform(music.audioUrl)} alt="Áudio imagem" />
+                    </a>}
                 </div>
                 <div className={styles.lyrics}>
                     {music.lyrics ? music.lyrics.map((lyrics, index) => (

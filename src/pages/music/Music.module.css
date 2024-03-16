@@ -21,9 +21,20 @@
     border-radius: 15px;
 }
 
-.music main > section > div h4 {
+.musicInfoAudio {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.music .musicInfo h4 {
     color: var(--text-secondary);
     margin-bottom: 5px;
+}
+
+.music .musicAudio img {
+    width: 55px;
+    cursor: pointer;
 }
 
 .music .lyrics > div {

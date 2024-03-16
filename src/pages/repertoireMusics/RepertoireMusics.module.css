@@ -26,6 +26,11 @@
     font-size: 1.5em;
 }
 
+.repertoireMusics .description {
+    margin-top: 5px;
+    color: var(--text-primary);
+}
+
 .repertoireMusics main .mainHeader div {
     background-color: var(--white);
     padding: 20px;

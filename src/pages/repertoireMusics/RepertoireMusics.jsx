@@ -71,26 +71,29 @@ export const RepertoireMusics = () => {
                     <div className={styles.mainHeader}>
                         <section>
                             <h1>{repertoire.name}</h1>
-                            <span>{musics.length} músicas</span>
+                            <span>{musics.length === 1 ? `${musics.length} música` : `${musics.length} músicas`}</span>
+                            <p className={styles.description}>{repertoire.description}</p>
                         </section>
                         <div>
                             <input placeholder='Pesquiar músicas' onChange={(e) => setMusicsFilter(e.target.value.toLowerCase())} />
                         </div>
                     </div>
                     <div className={styles.mainBody}>
-                        {musics ? musics.filter(music => {
-                            return music.name.toLowerCase().includes(musicsFilter)
-                        }).map((music, index) => (
-                        <Link to={`/repertoire/${repertoireId}/${music.id}`} key={index}>
-                            <section>
-                                <img src={music.image ? music.image : musicImage} alt="Imagem da música" />
-                            </section>
-                            <div>
-                                <h5>{music.name}</h5>
-                                <p>Artista/banda: {music.artist}</p>
-                                <span>Tom: {music.tone}</span>
-                            </div>
-                        </Link>)) : <p>Este repertório não possui nenhuma música!</p>}
+                        {musics ? musics
+                            .filter(music =>  music.name.toLowerCase().includes(musicsFilter))
+                            .sort((a, b) => a.name.localeCompare(b.name))
+                            .map((music, index) => (
+                                <Link to={`/repertoire/${repertoireId}/${music.id}`} key={index}>
+                                    <section>
+                                        <img src={music.image ? music.image : musicImage} alt="Imagem da música" />
+                                    </section>
+                                    <div>
+                                        <h5>{music.name}</h5>
+                                        <p>Artista/banda: {music.artist}</p>
+                                        <span>Tom: {music.tone}</span>
+                                    </div>
+                                </Link>
+                            )) : <p>Este repertório não possui nenhuma música!</p>}
                     </div>
                 </main>
                 <button className={styles.BtnAddMusic} onClick={() => setModalMusicOpen(!modalMusicOpen)}><i className="fa-solid fa-plus"></i></button>
