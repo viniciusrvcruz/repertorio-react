@@ -9,6 +9,7 @@ import { Header } from '../../components/header/Header'
 import { ModalSaveRepertoire } from '../../components/modal/ModalSaveRepertoire/ModalSaveRepertoire'
 import { ErrorMessage } from '../../components/alerts/ErrorMessage'
 import musicImage from './../../assets/music_image.jpg'
+import { RepertoireMusicEmptyState } from '../../components/empty_state/RepertoireMusicEmptyState'
 
 
 export const RepertoireMusics = () => {
@@ -79,7 +80,7 @@ export const RepertoireMusics = () => {
                         </div>
                     </div>
                     <div className={styles.mainBody}>
-                        {musics ? musics
+                        {musics.length > 0 ? musics
                             .filter(music =>  music.name.toLowerCase().includes(musicsFilter))
                             .sort((a, b) => a.name.localeCompare(b.name))
                             .map((music, index) => (
@@ -93,7 +94,7 @@ export const RepertoireMusics = () => {
                                         <span>Tom: {music.tone}</span>
                                     </div>
                                 </Link>
-                            )) : <p>Este repertório não possui nenhuma música!</p>}
+                            )) : <RepertoireMusicEmptyState />}
                     </div>
                 </main>
                 <button className={styles.BtnAddMusic} onClick={() => setModalMusicOpen(!modalMusicOpen)}><i className="fa-solid fa-plus"></i></button>

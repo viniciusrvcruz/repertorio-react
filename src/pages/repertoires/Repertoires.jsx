@@ -8,6 +8,7 @@ import { collection, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { ErrorMessage } from '../../components/alerts/ErrorMessage';
 import { Loading } from '../../components/loading/Loading';
+import { RepertoireEmptyState } from '../../components/empty_state/RepertoireEmptyState';
 
 export const Repertoires = () => {
     const { user } = useContext(AuthContext)
@@ -51,7 +52,7 @@ export const Repertoires = () => {
             </div>
             <input placeholder='Pesquisar repertórios' onChange={(e) => setRepertoiresFilter(e.target.value.toLowerCase())} />
             <hr />
-            {repertoires && repertoires
+            {repertoires.length > 0 ? repertoires
                 .filter(repertoire => repertoire.name.toLowerCase().includes(repertoiresFilter))
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((repertoire, index) => (
@@ -76,7 +77,7 @@ export const Repertoires = () => {
                             </div>
                         </div>
                     </div>
-                ))}
+                )) : <RepertoireEmptyState />}
             <button className={styles.BtnOpenModal} onClick={() => setModalOpen(!modalOpen)}><i className="fa-solid fa-plus"></i></button>
             <ModalSaveRepertoire open={modalOpen} setOpen={setModalOpen} user={user} repertoire={repertoireSelected} setRepertoire={setRepertoireSelected} />
         </div>
