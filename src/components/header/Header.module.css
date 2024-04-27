@@ -49,3 +49,21 @@
     white-space: nowrap;
     overflow: hidden;
 }
+
+@media (min-width: 1024px) {
+    .header {
+        padding: 20px 10%;
+    }
+
+    .header ul {
+        top: 50px;
+        right: 115px;
+    }
+}
+
+@media (min-width: 1285px) {
+    .header ul {
+        top: 50px;
+        right: 140px;
+    }
+}

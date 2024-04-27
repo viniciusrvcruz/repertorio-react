@@ -142,3 +142,28 @@
     font-size: 1.4em;
     color: var(--white);
 }
+
+@media (min-width: 600px) {
+    .repertoires {
+        padding: 20px 100px 100px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .repertoires {
+        padding: 20px 20% 100px;
+    }
+
+    .repertoireCardHeader h4 {
+        font-size: 1.3em;
+    }
+
+    .repertoireCardBody p {
+        font-size: .9em;
+    }
+
+    .BtnOpenModal {
+        right: 240px;
+        bottom: 70px;
+    }
+}

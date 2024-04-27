@@ -83,3 +83,15 @@
     background-color: var(--blue-primary);
     color: var(--white);
 }
+
+@media (min-width: 600px) {
+    .ModalSaveRepertoire > div {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .ModalSaveRepertoire > div {
+        width: 30%;
+    }
+}
