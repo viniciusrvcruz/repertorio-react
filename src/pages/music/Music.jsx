@@ -8,6 +8,8 @@ import { db } from '../../services/firebaseConfig'
 import { GetDigitalPlatform, VideoId } from '../../utils/Utils'
 import { ModalSaveMusic } from '../../components/modal/ModalSaveMusic/ModalSaveMusic'
 import { ErrorMessage } from '../../components/alerts/ErrorMessage'
+import { LyricsEmptyState } from '../../components/empty_state/LyricsEmptyState'
+import { VideoEmptyState } from '../../components/empty_state/VideoEmptyState'
 
 export const Music = () => {
     const { user } = useContext(AuthContext)
@@ -75,10 +77,10 @@ export const Music = () => {
                 </ul>}
         </Header>
         <main>
-            {music.videoUrl && 
+            {music.videoUrl ?
                 <div className={styles.videoContainer}>
                     <iframe src={`https://www.youtube.com/embed/${VideoId(music.videoUrl)}`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-                </div>
+                </div> : <VideoEmptyState />
             }
             <section>
                 <div className={styles.musicInfoAudio}>
@@ -104,7 +106,7 @@ export const Music = () => {
                                 {lyrics.annotation}
                             </div>}
                         </div>
-                    )) : <div>Não contém letra</div>}
+                    )) : <LyricsEmptyState />}
                 </div>
             </section>
         </main>
